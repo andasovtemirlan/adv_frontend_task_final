@@ -19,6 +19,7 @@ import {
   Stack,
 } from '@mui/material';
 import { AddCircle, Delete, Edit } from '@mui/icons-material';
+import { DatePickerField } from '@/shared/components/DatePickers';
 import {
   DndContext,
   DragOverlay,
@@ -352,6 +353,7 @@ const KanbanBoard = ({
     description: '',
     priority: 'medium',
     assigneeId: null as number | null,
+    dueDate: '',
   });
 
     const sensors = useSensors(
@@ -439,11 +441,11 @@ const KanbanBoard = ({
           priority: newTaskData.priority as any,
           projectId: selectedProjectId,
           assigneeId: newTaskData.assigneeId || 1,
-          dueDate: new Date().toISOString().split('T')[0],
+          dueDate: newTaskData.dueDate || new Date().toISOString().split('T')[0],
           estimatedHours: 0,
           actualHours: 0,
         });
-        setNewTaskData({ title: '', description: '', priority: 'medium', assigneeId: null });
+        setNewTaskData({ title: '', description: '', priority: 'medium', assigneeId: null, dueDate: '' });
         setCreatingTask(null);
       }
     }, [creatingTask, newTaskData, selectedProjectId, onTaskCreate, tasks]);
@@ -559,6 +561,15 @@ const KanbanBoard = ({
                   <MenuItem value="high">High</MenuItem>
                 </Select>
               </FormControl>
+              <DatePickerField
+                label="Due Date"
+                value={editingTask?.dueDate || ''}
+                onChange={(date) =>
+                  setEditingTask(
+                    editingTask ? { ...editingTask, dueDate: date } : null
+                  )
+                }
+              />
               <FormControl fullWidth>
                 <InputLabel>Status</InputLabel>
                 <Select
@@ -636,6 +647,16 @@ const KanbanBoard = ({
                   <MenuItem value="high">High</MenuItem>
                 </Select>
               </FormControl>
+              <DatePickerField
+                label="Due Date"
+                value={newTaskData.dueDate || ''}
+                onChange={(date) =>
+                  setNewTaskData({
+                    ...newTaskData,
+                    dueDate: date,
+                  })
+                }
+              />
               <FormControl fullWidth>
                 <InputLabel>Assign To (Optional)</InputLabel>
                 <Select

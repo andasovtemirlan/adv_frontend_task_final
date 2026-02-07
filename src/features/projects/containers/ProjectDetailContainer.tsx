@@ -2,6 +2,7 @@ import { useState, useCallback, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Typography, Box, Button, TextField, Alert, CircularProgress } from "@mui/material";
 import { useGetProjectQuery, useUpdateProjectMutation, useDeleteProjectMutation, useCreateProjectMutation, useGetTasksQuery } from "@/store/api";
+import { DatePickerField } from "@/shared/components/DatePickers";
 import TeamAssignmentPanel from "../components/TeamAssignmentPanel";
 import type { Project } from "@/shared/types";
 
@@ -21,6 +22,8 @@ const ProjectDetailContainer = () => {
     description: '',
     status: 'active',
     progress: 0,
+    startDate: '',
+    endDate: '',
   });
   
   const [saveError, setSaveError] = useState<string | null>(null);
@@ -33,6 +36,8 @@ const ProjectDetailContainer = () => {
         description: project.description,
         status: project.status,
         progress: project.progress,
+        startDate: project.startDate || '',
+        endDate: project.endDate || '',
       });
     }
   }, [project, isNewProject]);
@@ -136,6 +141,18 @@ const ProjectDetailContainer = () => {
           rows={4}
           variant="outlined"
         />
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 2 }}>
+          <DatePickerField
+            label="Start Date"
+            value={formData.startDate || ''}
+            onChange={(date) => handleInputChange('startDate', date)}
+          />
+          <DatePickerField
+            label="End Date"
+            value={formData.endDate || ''}
+            onChange={(date) => handleInputChange('endDate', date)}
+          />
+        </Box>
         <TextField
           label="Progress (%)"
           type="number"
