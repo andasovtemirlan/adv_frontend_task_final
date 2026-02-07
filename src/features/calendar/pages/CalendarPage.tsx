@@ -6,6 +6,7 @@ import { enUS } from 'date-fns/locale';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { useGetTasksQuery } from '@/store/api';
 import type { Task } from '@/shared/types';
+import type { View } from 'react-big-calendar';
 import LoadingSpinner from '@/shared/components/LoadingSpinner';
 
 const locales = {
@@ -32,6 +33,8 @@ const CalendarPage = () => {
   const { data: tasks = [], isLoading } = useGetTasksQuery({ projectId: undefined });
   const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null);
   const [openDialog, setOpenDialog] = useState(false);
+  const [view, setView] = useState<View>('month');
+  const [date, setDate] = useState(new Date());
 
   const events: CalendarEvent[] = useMemo(() => {
     return tasks
@@ -71,6 +74,10 @@ const CalendarPage = () => {
           endAccessor="end"
           style={{ height: '100%' }}
           onSelectEvent={handleSelectEvent}
+          view={view}
+          onView={setView}
+          date={date}
+          onNavigate={setDate}
           popup
         />
       </Paper>
