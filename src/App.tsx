@@ -18,6 +18,7 @@ const CalendarPage = lazy(() => import('@/features/calendar/pages/CalendarPage')
 const TimeTrackingPage = lazy(() => import('@/features/tracking/pages/TimeTrackingPage'));
 const ReportsPage = lazy(() => import('@/features/reports/pages/ReportsPage'));
 const AdvancedSearchPage = lazy(() => import('@/features/search/pages/AdvancedSearchPage'));
+const GanttChartPage = lazy(() => import('@/features/gantt/pages/GanttChartPage'));
 
 const router = createBrowserRouter([
   {
@@ -125,6 +126,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<LoadingSpinner />}>
             <AdvancedSearchPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'gantt',
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <GanttChartPage />
           </Suspense>
         ),
       },

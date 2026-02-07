@@ -20,6 +20,7 @@ import {
   Schedule,
   Assessment,
   Search,
+  ShowChart,
 } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { memo, useCallback } from 'react';
@@ -42,6 +43,7 @@ const menuItems = [
   { text: 'Time Tracking', icon: <Schedule />, path: '/tracking' },
   { text: 'Reports', icon: <Assessment />, path: '/reports' },
   { text: 'Search', icon: <Search />, path: '/search' },
+  { text: 'Gantt Chart', icon: <ShowChart />, path: '/gantt' },
 ];
 
 /**
