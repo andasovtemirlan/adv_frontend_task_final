@@ -1,19 +1,39 @@
 # Project Management System - Advanced Frontend SPA
 
-A production-ready, full-scale Single Page Application (SPA) built with React, TypeScript, Redux Toolkit, and Material-UI, featuring comprehensive project and task management capabilities with real-time authentication and activity logging.
+A production-ready, full-scale Single Page Application built with React 19, TypeScript, Redux Toolkit, and Material-UI, featuring comprehensive project and task management with real-time authentication, activity logging, and advanced analytics.
 
-## Status vs Plan
+## ✨ Features
 
-- Test coverage target (75%+) and Cypress E2E suite are not yet implemented; only unit scaffolding is present.
-- React-window virtualization is planned but not currently wired into task or list views.
-- Dark mode toggle is not implemented; only the flat light theme is active.
-- Production Docker/Nginx path is defined but not fully validated in this branch.
+### Core Features
+- **Dashboard** - Overview with real-time statistics, project cards, and activity feed
+- **Projects** - Create, edit, track projects with start/end dates and progress
+- **Tasks (Kanban)** - Drag-and-drop task management with status workflow
+- **Teams** - Manage team members and assign roles
+- **Activity Log** - Real-time tracking of all system events
+- **Members** - User profile management and team membership
+
+### Advanced Features (Phase 5-8 Enhancements)
+- **Calendar View** - Visual task calendar with week/day/agenda views
+- **Time Tracking** - Log work hours with metrics and reporting
+- **Reports & Analytics** - Comprehensive dashboards with charts and CSV export
+- **Advanced Search** - Full-text search with filters and saved search presets
+- **Gantt Chart** - Timeline visualization of projects and tasks
+- **Dark/Light Theme** - Toggle between dark minimal and light themes
+- **DatePicker Integration** - Project/task date selection in all forms
+
+### Technical Highlights
+- **Redux Toolkit** - State management with RTK Query for API caching
+- **Material-UI v5** - Modern component library with dark mode support
+- **TypeScript** - Full type safety across the codebase
+- **Responsive Design** - Mobile, tablet, and desktop support
+- **E2E Testing** - 19 Playwright tests covering all features
+- **Docker** - Production-ready Docker Compose setup
 
 ## Quick Start
 
 ### Prerequisites
 - Node.js 20+
-- Docker and Docker Compose (optional)
+- Docker and Docker Compose (recommended)
 
 ### Local Development
 
@@ -21,7 +41,7 @@ A production-ready, full-scale Single Page Application (SPA) built with React, T
 # Install dependencies
 npm install
 
-# Start both frontend and backend
+# Start frontend + backend in dev mode
 npm start
 ```
 
@@ -29,25 +49,224 @@ This starts:
 - **Frontend**: http://localhost:3000 (Vite dev server)
 - **Backend**: http://localhost:3001 (JSON Server with authentication)
 
-### Test Credentials
-- **Email**: admin@example.com
-- **Password**: admin123
-
-All 5 test users share the same password.
-
-### Docker Deployment
+### Docker (Recommended)
 
 ```bash
-docker-compose up
+# Build and start all services
+docker compose up
+
+# Then visit http://localhost:3000
 ```
 
-## Features Implemented
+### Test Credentials
+```
+Email: admin@example.com
+Password: admin123
+```
 
-### Dashboard
-- **Quick Statistics Cards** - Real-time project, task, and team member counts
-- **Project Overview Grid** - Visual project cards with progress bars and team member avatars
-- **Activity Feed** - Live activity timeline of all system events
-- **Responsive Design** - Adapts to mobile, tablet, and desktop screens
+All 5 test users share the same password configuration.
+
+## Project Structure
+
+```
+src/
+├── features/                    # Feature modules (Redux-style)
+│   ├── activity/               # Activity log feature
+│   ├── auth/                   # Authentication
+│   ├── calendar/               # Calendar view
+│   ├── dashboard/              # Dashboard page
+│   ├── gantt/                  # Gantt chart timeline
+│   ├── projects/               # Project management
+│   ├── reports/                # Analytics & reporting
+│   ├── search/                 # Advanced search
+│   ├── tasks/                  # Kanban board
+│   ├── teams/                  # Team management
+│   └── tracking/               # Time tracking
+├── shared/
+│   ├── components/             # Reusable UI components
+│   ├── hooks/                  # Custom React hooks
+│   ├── types/                  # TypeScript types
+│   └── utils/                  # Helper functions
+├── store/                      # Redux store & RTK Query
+├── theme/                      # Material-UI theme (light/dark)
+└── App.tsx                     # Main app component
+
+server/                         # Backend services
+└── db.json                     # JSON database
+```
+
+## Available Scripts
+
+```bash
+npm run dev              # Start dev server
+npm run build            # Build for production
+npm run preview          # Preview production build
+npm run lint             # Run ESLint
+npm run test             # Run unit tests
+npm test:ui              # Run tests with UI
+npm test:coverage        # Generate coverage report
+npm run playwright:test  # Run E2E tests with Playwright
+npm run playwright:ui    # Run E2E tests in UI mode
+npm run server           # Start backend server only
+npm start                # Start both frontend + backend
+```
+
+## API Endpoints
+
+### Authentication
+- `POST /auth/login` - User login
+- `POST /auth/register` - User registration
+- `GET /auth/user` - Current user info
+
+### Projects
+- `GET /projects` - List all projects
+- `POST /projects` - Create new project
+- `GET /projects/:id` - Get project details
+- `PUT /projects/:id` - Update project
+- `DELETE /projects/:id` - Delete project
+
+### Tasks
+- `GET /tasks` - List all tasks
+- `POST /tasks` - Create new task
+- `GET /tasks/:id` - Get task details
+- `PUT /tasks/:id` - Update task
+- `DELETE /tasks/:id` - Delete task
+
+### Teams & Members
+- `GET /teams` - List teams
+- `GET /members` - List members
+- `POST /members` - Add member
+- `DELETE /members/:id` - Remove member
+
+### Activity
+- `GET /activity` - Get activity feed
+- `GET /activity?userId=:id` - Get user activities
+
+## Testing
+
+### E2E Tests (Playwright)
+```bash
+npm run playwright:test    # Run all tests
+npm run playwright:ui      # Interactive test runner
+```
+
+Test coverage includes:
+- Authentication flow
+- Dashboard and navigation
+- Calendar view switching
+- Task CRUD operations
+- Project management
+- Time tracking
+- Reports and exports
+- Advanced search filters
+- Theme switching
+- Responsive design
+
+### Unit Tests (Vitest)
+```bash
+npm run test              # Run all tests
+npm run test:ui          # Run with UI
+npm run test:coverage    # Coverage report
+```
+
+## Theme Configuration
+
+The application includes a fully customizable Material-UI theme with:
+- **Light Mode**: Light backgrounds (#F8FAFC) with dark text (#1E293B)
+- **Dark Mode**: Dark backgrounds (#0F172A) with light text (#F1F5F9)
+- **Accent Colors**: Cyan (#06B6D4), Error (Red), Warning (Orange), Success (Green)
+- **Typography**: IBM Plex Mono for consistent monospace rendering
+
+Toggle themes via the sidebar menu or header controls.
+
+## Browser Support
+
+- Chrome/Edge (latest)
+- Firefox (latest)
+- Safari (latest)
+- Mobile browsers (iOS Safari, Chrome Mobile)
+
+## Production Deployment
+
+### Docker Production Build
+```bash
+# Build images
+docker compose build
+
+# Start services
+docker compose up -d
+```
+
+The app will be served at http://localhost:3000 via Nginx with optimized static asset caching.
+
+### Environment Variables
+Create a `.env` file (see `.env.example` for reference):
+```
+VITE_API_URL=http://localhost:3001
+VITE_APP_NAME=Project Management System
+```
+
+## Performance Optimization
+
+- **Code Splitting** - Route-based lazy loading with Suspense
+- **Bundle Analysis** - Vite provides build metrics
+- **API Caching** - RTK Query automatic cache invalidation
+- **Memoization** - React.memo on components to prevent re-renders
+- **Date-FNS** - Tree-shakeable date utilities instead of Moment.js
+
+## Troubleshooting
+
+### Port 3000/3001 already in use
+```bash
+# Change ports in package.json scripts or:
+npm run dev -- --port 3002
+```
+
+### Docker containers won't start
+```bash
+# Clean rebuild
+docker compose down
+docker compose up --build
+```
+
+### Theme not applying
+- Clear browser cache (Ctrl+Shift+Delete)
+- Check browser DevTools -> Application -> LocalStorage
+
+### API calls failing
+- Ensure backend is running: `npm run server`
+- Check network tab in DevTools
+- Verify `VITE_API_URL` environment variable
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| **UI Framework** | React 19.2.0 |
+| **Language** | TypeScript 5.9.3 |
+| **State Management** | Redux Toolkit 2.11.2 + RTK Query |
+| **Styling** | Material-UI 7.3.7 + Emotion |
+| **Build Tool** | Vite 7.3.1 |
+| **Testing** | Playwright 1.48.2, Vitest 4.0.18 |
+| **Backend** | Node.js + Express, JSON Server |
+| **Database** | JSON file (development) |
+| **Deployment** | Docker + Nginx |
+
+## License
+
+University assignment - Advanced Frontend Development
+
+## Support
+
+For issues or questions:
+1. Check the E2E tests for usage examples
+2. Review component props in TypeScript definitions
+3. Check Redux store structure in `src/store/`
+
+---
+
+**Last Updated**: February 2026  
+**Status**: Production Ready ✅
 
 ### Project Management
 - **Project List** - Browse all projects with search and status filtering
