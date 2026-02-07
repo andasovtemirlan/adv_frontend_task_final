@@ -22,7 +22,7 @@ export const lightPalette = {
     main: '#F59E0B',
     light: '#FCD34D',
     dark: '#D97706',
-    contrastText: '#ffffff',
+    contrastText: '#1E293B',
   },
   info: {
     main: '#06B6D4',
@@ -37,15 +37,15 @@ export const lightPalette = {
     contrastText: '#ffffff',
   },
   background: {
-    default: '#0F172A',
-    paper: '#1E293B',
+    default: '#F8FAFC',
+    paper: '#FFFFFF',
   },
   text: {
-    primary: '#F1F5F9',
-    secondary: '#CBD5E1',
-    disabled: '#64748B',
+    primary: '#1E293B',
+    secondary: '#64748B',
+    disabled: '#CBD5E1',
   },
-  divider: '#334155',
+  divider: '#E2E8F0',
 };
 
 export const darkPalette = {
