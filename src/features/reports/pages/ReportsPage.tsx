@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { Box, Paper, Typography, Grid, Container } from '@mui/material';
+import { Paper, Typography, Box } from '@mui/material';
 import {
   BarChart,
   Bar,
@@ -16,7 +16,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import { useGetProjectsQuery, useGetTasksQuery } from '@/store/api';
-import { Task, Project } from '@/shared/types';
+import type { Task, Project } from '@/shared/types';
 import LoadingSpinner from '@/shared/components/LoadingSpinner';
 
 const ReportsPage = () => {
@@ -96,177 +96,159 @@ const ReportsPage = () => {
   if (isLoading) return <LoadingSpinner />;
 
   return (
-    <Container maxWidth="xl" sx={{ py: 3 }}>
+    <Box sx={{ py: 3, px: 2, maxWidth: 1280, mx: 'auto' }}>
       <Typography variant="h4" sx={{ mb: 4, fontWeight: 700 }}>
         Reports & Analytics
       </Typography>
 
-      <Grid container spacing={3}>
+      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 3 }}>
         {/* Task Status Distribution */}
-        <Grid item xs={12} md={6}>
-          <Paper sx={{ p: 2, bgcolor: 'background.paper', height: '100%' }}>
-            <Typography variant="h6" sx={{ mb: 2, fontWeight: 700 }}>
-              Task Status Distribution
-            </Typography>
-            <ResponsiveContainer width="100%" height={300}>
-              <PieChart>
-                <Pie
-                  data={taskDistribution}
-                  cx="50%"
-                  cy="50%"
-                  labelLine={false}
-                  label={({ name, value }) => `${name}: ${value}`}
-                  outerRadius={100}
-                  fill="#8884d8"
-                  dataKey="value"
-                >
-                  {taskDistribution.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
-                  ))}
-                </Pie>
-                <Tooltip />
-              </PieChart>
-            </ResponsiveContainer>
-          </Paper>
-        </Grid>
+        <Paper sx={{ p: 2, bgcolor: 'background.paper', height: '100%' }}>
+          <Typography variant="h6" sx={{ mb: 2, fontWeight: 700 }}>
+            Task Status Distribution
+          </Typography>
+          <ResponsiveContainer width="100%" height={300}>
+            <PieChart>
+              <Pie
+                data={taskDistribution}
+                cx="50%"
+                cy="50%"
+                labelLine={false}
+                label={({ name, value }) => `${name}: ${value}`}
+                outerRadius={100}
+                fill="#8884d8"
+                dataKey="value"
+              >
+                {taskDistribution.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.color} />
+                ))}
+              </Pie>
+              <Tooltip />
+            </PieChart>
+          </ResponsiveContainer>
+        </Paper>
 
         {/* Priority Breakdown */}
-        <Grid item xs={12} md={6}>
-          <Paper sx={{ p: 2, bgcolor: 'background.paper', height: '100%' }}>
-            <Typography variant="h6" sx={{ mb: 2, fontWeight: 700 }}>
-              Task Priority Breakdown
-            </Typography>
-            <ResponsiveContainer width="100%" height={300}>
-              <PieChart>
-                <Pie
-                  data={priorityBreakdown}
-                  cx="50%"
-                  cy="50%"
-                  labelLine={false}
-                  label={({ name, value }) => `${name}: ${value}`}
-                  outerRadius={100}
-                  fill="#82ca9d"
-                  dataKey="value"
-                >
-                  {priorityBreakdown.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
-                  ))}
-                </Pie>
-                <Tooltip />
-              </PieChart>
-            </ResponsiveContainer>
-          </Paper>
-        </Grid>
+        <Paper sx={{ p: 2, bgcolor: 'background.paper', height: '100%' }}>
+          <Typography variant="h6" sx={{ mb: 2, fontWeight: 700 }}>
+            Task Priority Breakdown
+          </Typography>
+          <ResponsiveContainer width="100%" height={300}>
+            <PieChart>
+              <Pie
+                data={priorityBreakdown}
+                cx="50%"
+                cy="50%"
+                labelLine={false}
+                label={({ name, value }) => `${name}: ${value}`}
+                outerRadius={100}
+                fill="#82ca9d"
+                dataKey="value"
+              >
+                {priorityBreakdown.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.color} />
+                ))}
+              </Pie>
+              <Tooltip />
+            </PieChart>
+          </ResponsiveContainer>
+        </Paper>
 
         {/* Project Progress */}
-        <Grid item xs={12}>
-          <Paper sx={{ p: 2, bgcolor: 'background.paper' }}>
-            <Typography variant="h6" sx={{ mb: 2, fontWeight: 700 }}>
-              Project Progress
-            </Typography>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={projectProgress}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-                <XAxis dataKey="name" stroke="#CBD5E1" />
-                <YAxis stroke="#CBD5E1" />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: '#1E293B',
-                    border: '1px solid #334155',
-                    borderRadius: '4px',
-                  }}
-                  labelStyle={{ color: '#F1F5F9' }}
-                />
-                <Legend />
-                <Bar dataKey="progress" fill="#06B6D4" name="Progress %" />
-              </BarChart>
-            </ResponsiveContainer>
-          </Paper>
-        </Grid>
+        <Paper sx={{ p: 2, bgcolor: 'background.paper', gridColumn: { xs: '1', md: '1 / -1' } }}>
+          <Typography variant="h6" sx={{ mb: 2, fontWeight: 700 }}>
+            Project Progress
+          </Typography>
+          <ResponsiveContainer width="100%" height={300}>
+            <BarChart data={projectProgress}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+              <XAxis dataKey="name" stroke="#CBD5E1" />
+              <YAxis stroke="#CBD5E1" />
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: '#1E293B',
+                  border: '1px solid #334155',
+                  borderRadius: '4px',
+                }}
+                labelStyle={{ color: '#F1F5F9' }}
+              />
+              <Legend />
+              <Bar dataKey="progress" fill="#06B6D4" name="Progress %" />
+            </BarChart>
+          </ResponsiveContainer>
+        </Paper>
 
         {/* Time Tracking Metrics */}
-        <Grid item xs={12}>
-          <Paper sx={{ p: 2, bgcolor: 'background.paper' }}>
-            <Typography variant="h6" sx={{ mb: 2, fontWeight: 700 }}>
-              Time Tracking Summary
-            </Typography>
-            <ResponsiveContainer width="100%" height={300}>
-              <LineChart data={timeMetrics}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
-                <XAxis dataKey="name" stroke="#CBD5E1" />
-                <YAxis stroke="#CBD5E1" />
-                <Tooltip
-                  contentStyle={{
-                    backgroundColor: '#1E293B',
-                    border: '1px solid #334155',
-                    borderRadius: '4px',
-                  }}
-                  labelStyle={{ color: '#F1F5F9' }}
-                />
-                <Legend />
-                <Line
-                  type="monotone"
-                  dataKey="value"
-                  stroke="#06B6D4"
-                  strokeWidth={2}
-                  dot={{ fill: '#06B6D4', r: 6 }}
-                  name="Hours"
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          </Paper>
-        </Grid>
+        <Paper sx={{ p: 2, bgcolor: 'background.paper', gridColumn: { xs: '1', md: '1 / -1' } }}>
+          <Typography variant="h6" sx={{ mb: 2, fontWeight: 700 }}>
+            Time Tracking Summary
+          </Typography>
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart data={timeMetrics}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+              <XAxis dataKey="name" stroke="#CBD5E1" />
+              <YAxis stroke="#CBD5E1" />
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: '#1E293B',
+                  border: '1px solid #334155',
+                  borderRadius: '4px',
+                }}
+                labelStyle={{ color: '#F1F5F9' }}
+              />
+              <Legend />
+              <Line
+                type="monotone"
+                dataKey="value"
+                stroke="#06B6D4"
+                strokeWidth={2}
+                dot={{ fill: '#06B6D4', r: 6 }}
+                name="Hours"
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </Paper>
 
         {/* Summary Cards */}
-        <Grid item xs={12}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6} md={3}>
-              <Paper sx={{ p: 2, bgcolor: 'background.paper', textAlign: 'center' }}>
-                <Typography variant="caption" color="textSecondary">
-                  Total Projects
-                </Typography>
-                <Typography variant="h5" sx={{ fontWeight: 700, color: 'primary.main' }}>
-                  {projects.length}
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6} md={3}>
-              <Paper sx={{ p: 2, bgcolor: 'background.paper', textAlign: 'center' }}>
-                <Typography variant="caption" color="textSecondary">
-                  Total Tasks
-                </Typography>
-                <Typography variant="h5" sx={{ fontWeight: 700, color: 'secondary.main' }}>
-                  {tasks.length}
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6} md={3}>
-              <Paper sx={{ p: 2, bgcolor: 'background.paper', textAlign: 'center' }}>
-                <Typography variant="caption" color="textSecondary">
-                  Completed Tasks
-                </Typography>
-                <Typography variant="h5" sx={{ fontWeight: 700, color: 'success.main' }}>
-                  {tasks.filter((t: Task) => t.status === 'done').length}
-                </Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6} md={3}>
-              <Paper sx={{ p: 2, bgcolor: 'background.paper', textAlign: 'center' }}>
-                <Typography variant="caption" color="textSecondary">
-                  Completion Rate
-                </Typography>
-                <Typography variant="h5" sx={{ fontWeight: 700, color: 'success.main' }}>
-                  {tasks.length > 0
-                    ? ((tasks.filter((t: Task) => t.status === 'done').length / tasks.length) * 100).toFixed(0)
-                    : 0}
-                  %
-                </Typography>
-              </Paper>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
-    </Container>
+        <Box sx={{ gridColumn: { xs: '1', md: '1 / -1' }, display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: 'repeat(4, 1fr)' }, gap: 2 }}>
+          <Paper sx={{ p: 2, bgcolor: 'background.paper', textAlign: 'center' }}>
+            <Typography variant="caption" color="textSecondary">
+              Total Projects
+            </Typography>
+            <Typography variant="h5" sx={{ fontWeight: 700, color: 'primary.main' }}>
+              {projects.length}
+            </Typography>
+          </Paper>
+          <Paper sx={{ p: 2, bgcolor: 'background.paper', textAlign: 'center' }}>
+            <Typography variant="caption" color="textSecondary">
+              Total Tasks
+            </Typography>
+            <Typography variant="h5" sx={{ fontWeight: 700, color: 'secondary.main' }}>
+              {tasks.length}
+            </Typography>
+          </Paper>
+          <Paper sx={{ p: 2, bgcolor: 'background.paper', textAlign: 'center' }}>
+            <Typography variant="caption" color="textSecondary">
+              Completed Tasks
+            </Typography>
+            <Typography variant="h5" sx={{ fontWeight: 700, color: 'success.main' }}>
+              {tasks.filter((t) => t.status === 'done').length}
+            </Typography>
+          </Paper>
+          <Paper sx={{ p: 2, bgcolor: 'background.paper', textAlign: 'center' }}>
+            <Typography variant="caption" color="textSecondary">
+              Completion Rate
+            </Typography>
+            <Typography variant="h5" sx={{ fontWeight: 700, color: 'success.main' }}>
+              {tasks.length > 0
+                ? ((tasks.filter((t) => t.status === 'done').length / tasks.length) * 100).toFixed(0)
+                : 0}
+              %
+            </Typography>
+          </Paper>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

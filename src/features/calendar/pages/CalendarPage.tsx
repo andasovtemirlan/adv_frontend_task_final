@@ -5,7 +5,7 @@ import { format, parse, startOfWeek, getDay, parseISO } from 'date-fns';
 import { enUS } from 'date-fns/locale';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { useGetTasksQuery } from '@/store/api';
-import { Task } from '@/shared/types';
+import type { Task } from '@/shared/types';
 import LoadingSpinner from '@/shared/components/LoadingSpinner';
 
 const locales = {

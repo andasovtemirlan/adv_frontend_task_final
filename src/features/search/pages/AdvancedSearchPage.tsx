@@ -14,7 +14,6 @@ import {
   DialogContent,
   DialogActions,
   Alert,
-  Grid,
   Typography,
   Table,
   TableBody,
@@ -26,7 +25,7 @@ import {
 } from '@mui/material';
 import { Delete as DeleteIcon, Edit as EditIcon } from '@mui/icons-material';
 import { useGetTasksQuery, useGetProjectsQuery } from '@/store/api';
-import { Task, TaskStatus, TaskPriority } from '@/shared/types';
+import type { Task, TaskStatus, TaskPriority } from '@/shared/types';
 
 interface FilterPreset {
   id: string;
@@ -152,9 +151,9 @@ const AdvancedSearchPage = () => {
         Advanced Search & Filters
       </Typography>
 
-      <Grid container spacing={3}>
+      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '2fr 1fr' }, gap: 3 }}>
         {/* Filter Panel */}
-        <Grid item xs={12} md={8}>
+        <Box>
           <Paper sx={{ p: 2, bgcolor: 'background.paper' }}>
             <Typography variant="h6" sx={{ mb: 2, fontWeight: 700 }}>
               Search Filters
@@ -268,10 +267,10 @@ const AdvancedSearchPage = () => {
               </Table>
             </TableContainer>
           </Paper>
-        </Grid>
+        </Box>
 
         {/* Presets Panel */}
-        <Grid item xs={12} md={4}>
+        <Box>
           <Paper sx={{ p: 2, bgcolor: 'background.paper', height: '100%' }}>
             <Typography variant="h6" sx={{ mb: 2, fontWeight: 700 }}>
               Saved Presets ({presets.length})
@@ -319,8 +318,8 @@ const AdvancedSearchPage = () => {
               </Box>
             )}
           </Paper>
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
 
       {/* Save Preset Dialog */}
       <Dialog open={openPresetDialog} onClose={() => setOpenPresetDialog(false)} maxWidth="xs" fullWidth>

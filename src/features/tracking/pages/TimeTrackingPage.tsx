@@ -15,10 +15,9 @@ import {
   DialogActions,
   TextField,
   Button,
-  Alert,
 } from '@mui/material';
 import { useGetTasksQuery, useUpdateTaskMutation } from '@/store/api';
-import { Task } from '@/shared/types';
+import type { Task } from '@/shared/types';
 import LoadingSpinner from '@/shared/components/LoadingSpinner';
 import { formatPercentage } from '@/shared/utils/formatters';
 

@@ -6,7 +6,7 @@ export const typography = {
     '"Segoe UI"',
     '"Courier New"',
     'monospace',
-  ].join(',',
+  ].join(','),
   h1: {
     fontSize: '2.5rem',
     fontWeight: 700,

@@ -438,7 +438,7 @@ const KanbanBoard = ({
           status: creatingTask as any,
           priority: newTaskData.priority as any,
           projectId: selectedProjectId,
-          assigneeId: newTaskData.assigneeId,
+          assigneeId: newTaskData.assigneeId || 1,
           dueDate: new Date().toISOString().split('T')[0],
           estimatedHours: 0,
           actualHours: 0,

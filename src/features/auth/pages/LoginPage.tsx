@@ -149,7 +149,7 @@ const LoginPage = () => {
     [regName, regEmail, regPassword, regConfirmPassword, navigate, from]
   );
 
-  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleTabChange = (_event: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue);
     setLoginError('');
     setRegError('');
