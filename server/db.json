@@ -1,0 +1,815 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@example.com",
+      "password": "$2a$10$o37vFtfFDpyS04A6axS5fOnR83mQ3eEOSPpMmXBeRp4y/BZzlSDFC",
+      "name": "Admin User",
+      "role": "admin",
+      "avatar": null,
+      "createdAt": "2026-01-10T08:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "email": "john.doe@example.com",
+      "password": "$2a$10$o37vFtfFDpyS04A6axS5fOnR83mQ3eEOSPpMmXBeRp4y/BZzlSDFC",
+      "name": "John Doe",
+      "role": "developer",
+      "avatar": null,
+      "createdAt": "2026-01-11T09:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "email": "jane.smith@example.com",
+      "password": "$2a$10$o37vFtfFDpyS04A6axS5fOnR83mQ3eEOSPpMmXBeRp4y/BZzlSDFC",
+      "name": "Jane Smith",
+      "role": "developer",
+      "avatar": null,
+      "createdAt": "2026-01-11T10:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "email": "mike.wilson@example.com",
+      "password": "$2a$10$o37vFtfFDpyS04A6axS5fOnR83mQ3eEOSPpMmXBeRp4y/BZzlSDFC",
+      "name": "Mike Wilson",
+      "role": "designer",
+      "avatar": null,
+      "createdAt": "2026-01-12T08:30:00.000Z"
+    },
+    {
+      "id": 5,
+      "email": "sarah.jones@example.com",
+      "password": "$2a$10$o37vFtfFDpyS04A6axS5fOnR83mQ3eEOSPpMmXBeRp4y/BZzlSDFC",
+      "name": "Sarah Jones",
+      "role": "designer",
+      "avatar": null,
+      "createdAt": "2026-01-12T09:00:00.000Z"
+    }
+  ],
+  "teams": [
+    {
+      "id": 1,
+      "name": "Engineering Team",
+      "description": "Core development team responsible for backend and frontend implementation",
+      "memberIds": [
+        1,
+        2,
+        3
+      ],
+      "leaderId": 1,
+      "createdAt": "2026-01-15T10:00:00.000Z",
+      "updatedAt": "2026-01-15T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "name": "Design Team",
+      "description": "UI/UX design team focusing on user experience and visual design",
+      "memberIds": [
+        4,
+        5
+      ],
+      "leaderId": 4,
+      "createdAt": "2026-01-20T10:00:00.000Z",
+      "updatedAt": "2026-01-20T10:00:00.000Z"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "name": "Website Redesign",
+      "description": "Complete overhaul of company website with modern design and improved UX",
+      "status": "pending",
+      "teamId": 2,
+      "ownerId": 4,
+      "startDate": "2026-01-15",
+      "endDate": "2026-03-31",
+      "priority": "high",
+      "progress": 45,
+      "createdAt": "2026-01-15T09:00:00.000Z",
+      "updatedAt": "2026-02-03T17:17:33.215Z"
+    },
+    {
+      "id": 2,
+      "name": "Mobile App Development",
+      "description": "iOS and Android mobile application for customer engagement",
+      "status": "active",
+      "teamId": 1,
+      "ownerId": 1,
+      "startDate": "2026-02-10",
+      "endDate": "2026-06-30",
+      "priority": "critical",
+      "progress": 15,
+      "createdAt": "2026-01-20T11:00:00.000Z",
+      "updatedAt": "2026-02-03T17:26:01.089Z"
+    },
+    {
+      "id": 3,
+      "name": "API Integration",
+      "description": "Third-party API integration for payment processing and analytics",
+      "status": "completed",
+      "teamId": 1,
+      "ownerId": 2,
+      "startDate": "2025-12-01",
+      "endDate": "2026-01-31",
+      "priority": "medium",
+      "progress": 23,
+      "createdAt": "2025-12-01T08:00:00.000Z",
+      "updatedAt": "2026-02-03T17:27:04.956Z"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Design homepage mockup",
+      "description": "Create high-fidelity mockup for new homepage design",
+      "projectId": 1,
+      "status": "done",
+      "priority": "high",
+      "assigneeId": 4,
+      "dueDate": "2026-01-25",
+      "estimatedHours": 8,
+      "actualHours": 7,
+      "createdAt": "2026-01-15T10:00:00.000Z",
+      "updatedAt": "2026-01-24T15:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "title": "Implement navigation component",
+      "description": "Build responsive navigation with mobile menu and accessibility features",
+      "projectId": 1,
+      "status": "8",
+      "priority": "high",
+      "assigneeId": 2,
+      "dueDate": "2026-02-05",
+      "estimatedHours": 12,
+      "actualHours": 8,
+      "createdAt": "2026-01-16T09:00:00.000Z",
+      "updatedAt": "2026-02-03T17:08:46.069Z"
+    },
+    {
+      "id": 3,
+      "title": "Create color palette and typography",
+      "description": "Define brand colors, typography scale, and design tokens",
+      "projectId": 1,
+      "status": "8",
+      "priority": "medium",
+      "assigneeId": 5,
+      "dueDate": "2026-01-20",
+      "estimatedHours": 4,
+      "actualHours": 4,
+      "createdAt": "2026-01-15T11:00:00.000Z",
+      "updatedAt": "2026-02-03T17:08:52.906Z"
+    },
+    {
+      "id": 4,
+      "title": "Setup footer with contact info",
+      "description": "Implement footer component with social links and contact information",
+      "projectId": 1,
+      "status": "review",
+      "priority": "low",
+      "assigneeId": 3,
+      "dueDate": "2026-02-08",
+      "estimatedHours": 4,
+      "actualHours": 3,
+      "createdAt": "2026-01-18T10:00:00.000Z",
+      "updatedAt": "2026-02-02T16:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "title": "Optimize images and assets",
+      "description": "Compress and optimize all images for better page load performance",
+      "projectId": 1,
+      "status": "todo",
+      "priority": "medium",
+      "assigneeId": 2,
+      "dueDate": "2026-02-12",
+      "estimatedHours": 6,
+      "actualHours": 0,
+      "createdAt": "2026-01-22T09:00:00.000Z",
+      "updatedAt": "2026-01-22T09:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "title": "Define app architecture",
+      "description": "Document technical architecture and technology stack decisions",
+      "projectId": 2,
+      "status": "done",
+      "priority": "critical",
+      "assigneeId": 1,
+      "dueDate": "2026-01-28",
+      "estimatedHours": 16,
+      "actualHours": 14,
+      "createdAt": "2026-01-20T12:00:00.000Z",
+      "updatedAt": "2026-01-28T18:00:00.000Z"
+    },
+    {
+      "id": 7,
+      "title": "Setup React Native project",
+      "description": "Initialize React Native project with TypeScript and navigation",
+      "projectId": 2,
+      "status": "in_progress",
+      "priority": "high",
+      "assigneeId": 2,
+      "dueDate": "2026-02-05",
+      "estimatedHours": 8,
+      "actualHours": 5,
+      "createdAt": "2026-01-29T09:00:00.000Z",
+      "updatedAt": "2026-02-03T10:00:00.000Z"
+    },
+    {
+      "id": 8,
+      "title": "Design app wireframes",
+      "description": "Create wireframes for all main app screens and user flows",
+      "projectId": 2,
+      "status": "review",
+      "priority": "high",
+      "assigneeId": 4,
+      "dueDate": "2026-02-03",
+      "estimatedHours": 12,
+      "actualHours": 11,
+      "createdAt": "2026-01-23T10:00:00.000Z",
+      "updatedAt": "2026-02-02T15:00:00.000Z"
+    },
+    {
+      "id": 9,
+      "title": "Research push notification services",
+      "description": "Evaluate Firebase, OneSignal, and AWS SNS for push notifications",
+      "projectId": 2,
+      "status": "todo",
+      "priority": "medium",
+      "assigneeId": 3,
+      "dueDate": "2026-02-10",
+      "estimatedHours": 8,
+      "actualHours": 0,
+      "createdAt": "2026-01-25T11:00:00.000Z",
+      "updatedAt": "2026-01-25T11:00:00.000Z"
+    },
+    {
+      "id": 10,
+      "title": "Setup CI/CD pipeline",
+      "description": "Configure GitHub Actions for automated testing and deployment",
+      "projectId": 2,
+      "status": "backlog",
+      "priority": "medium",
+      "assigneeId": 1,
+      "dueDate": "2026-02-20",
+      "estimatedHours": 6,
+      "actualHours": 0,
+      "createdAt": "2026-01-26T09:00:00.000Z",
+      "updatedAt": "2026-01-26T09:00:00.000Z"
+    },
+    {
+      "id": 11,
+      "title": "Integrate Stripe payment API",
+      "description": "Implement Stripe payment processing with webhook handling",
+      "projectId": 3,
+      "status": "done",
+      "priority": "critical",
+      "assigneeId": 2,
+      "dueDate": "2026-01-15",
+      "estimatedHours": 20,
+      "actualHours": 22,
+      "createdAt": "2025-12-01T09:00:00.000Z",
+      "updatedAt": "2026-01-15T17:00:00.000Z"
+    },
+    {
+      "id": 12,
+      "title": "Setup Google Analytics",
+      "description": "Integrate Google Analytics 4 with custom event tracking",
+      "projectId": 3,
+      "status": "12",
+      "priority": "medium",
+      "assigneeId": 3,
+      "dueDate": "2026-01-20",
+      "estimatedHours": 8,
+      "actualHours": 6,
+      "createdAt": "2025-12-05T10:00:00.000Z",
+      "updatedAt": "2026-02-03T17:08:58.059Z"
+    },
+    {
+      "id": 13,
+      "title": "Write API documentation",
+      "description": "Document all API endpoints with examples and error codes",
+      "projectId": 3,
+      "status": "8",
+      "priority": "high",
+      "assigneeId": 1,
+      "dueDate": "2026-01-28",
+      "estimatedHours": 12,
+      "actualHours": 10,
+      "createdAt": "2025-12-10T11:00:00.000Z",
+      "updatedAt": "2026-02-03T17:08:56.820Z"
+    },
+    {
+      "id": 14,
+      "title": "Perform security audit",
+      "description": "Conduct comprehensive security review and penetration testing",
+      "projectId": 3,
+      "status": "14",
+      "priority": "critical",
+      "assigneeId": 1,
+      "dueDate": "2026-01-30",
+      "estimatedHours": 16,
+      "actualHours": 18,
+      "createdAt": "2025-12-15T09:00:00.000Z",
+      "updatedAt": "2026-02-03T17:08:59.167Z"
+    },
+    {
+      "id": 15,
+      "title": "Deploy to production",
+      "description": "Deploy integrated APIs to production environment with monitoring",
+      "projectId": 3,
+      "status": "done",
+      "priority": "critical",
+      "assigneeId": 2,
+      "dueDate": "2026-01-31",
+      "estimatedHours": 8,
+      "actualHours": 10,
+      "createdAt": "2026-01-28T10:00:00.000Z",
+      "updatedAt": "2026-01-31T17:00:00.000Z"
+    }
+  ],
+  "activities": [
+    {
+      "id": 1,
+      "type": "project_created",
+      "entityType": "project",
+      "entityId": 1,
+      "userId": 4,
+      "userName": "Mike Wilson",
+      "message": "created project 'Website Redesign'",
+      "metadata": {
+        "projectName": "Website Redesign"
+      },
+      "timestamp": "2026-01-15T09:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "type": "task_created",
+      "entityType": "task",
+      "entityId": 1,
+      "userId": 4,
+      "userName": "Mike Wilson",
+      "message": "created task 'Design homepage mockup'",
+      "metadata": {
+        "taskTitle": "Design homepage mockup",
+        "projectId": 1
+      },
+      "timestamp": "2026-01-15T10:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "type": "task_created",
+      "entityType": "task",
+      "entityId": 3,
+      "userId": 5,
+      "userName": "Sarah Jones",
+      "message": "created task 'Create color palette and typography'",
+      "metadata": {
+        "taskTitle": "Create color palette and typography",
+        "projectId": 1
+      },
+      "timestamp": "2026-01-15T11:00:00.000Z"
+    },
+    {
+      "id": 4,
+      "type": "task_created",
+      "entityType": "task",
+      "entityId": 2,
+      "userId": 2,
+      "userName": "John Doe",
+      "message": "created task 'Implement navigation component'",
+      "metadata": {
+        "taskTitle": "Implement navigation component",
+        "projectId": 1
+      },
+      "timestamp": "2026-01-16T09:00:00.000Z"
+    },
+    {
+      "id": 5,
+      "type": "task_created",
+      "entityType": "task",
+      "entityId": 4,
+      "userId": 3,
+      "userName": "Jane Smith",
+      "message": "created task 'Setup footer with contact info'",
+      "metadata": {
+        "taskTitle": "Setup footer with contact info",
+        "projectId": 1
+      },
+      "timestamp": "2026-01-18T10:00:00.000Z"
+    },
+    {
+      "id": 6,
+      "type": "task_status_changed",
+      "entityType": "task",
+      "entityId": 3,
+      "userId": 5,
+      "userName": "Sarah Jones",
+      "message": "moved task 'Create color palette and typography' to Done",
+      "metadata": {
+        "taskTitle": "Create color palette and typography",
+        "oldStatus": "in_progress",
+        "newStatus": "done"
+      },
+      "timestamp": "2026-01-20T14:00:00.000Z"
+    },
+    {
+      "id": 7,
+      "type": "project_created",
+      "entityType": "project",
+      "entityId": 2,
+      "userId": 1,
+      "userName": "Admin User",
+      "message": "created project 'Mobile App Development'",
+      "metadata": {
+        "projectName": "Mobile App Development"
+      },
+      "timestamp": "2026-01-20T11:00:00.000Z"
+    },
+    {
+      "id": 8,
+      "type": "team_created",
+      "entityType": "team",
+      "entityId": 2,
+      "userId": 4,
+      "userName": "Mike Wilson",
+      "message": "created team 'Design Team'",
+      "metadata": {
+        "teamName": "Design Team"
+      },
+      "timestamp": "2026-01-20T10:00:00.000Z"
+    },
+    {
+      "id": 9,
+      "type": "task_created",
+      "entityType": "task",
+      "entityId": 6,
+      "userId": 1,
+      "userName": "Admin User",
+      "message": "created task 'Define app architecture'",
+      "metadata": {
+        "taskTitle": "Define app architecture",
+        "projectId": 2
+      },
+      "timestamp": "2026-01-20T12:00:00.000Z"
+    },
+    {
+      "id": 10,
+      "type": "task_created",
+      "entityType": "task",
+      "entityId": 5,
+      "userId": 2,
+      "userName": "John Doe",
+      "message": "created task 'Optimize images and assets'",
+      "metadata": {
+        "taskTitle": "Optimize images and assets",
+        "projectId": 1
+      },
+      "timestamp": "2026-01-22T09:00:00.000Z"
+    },
+    {
+      "id": 11,
+      "type": "task_created",
+      "entityType": "task",
+      "entityId": 8,
+      "userId": 4,
+      "userName": "Mike Wilson",
+      "message": "created task 'Design app wireframes'",
+      "metadata": {
+        "taskTitle": "Design app wireframes",
+        "projectId": 2
+      },
+      "timestamp": "2026-01-23T10:00:00.000Z"
+    },
+    {
+      "id": 12,
+      "type": "task_status_changed",
+      "entityType": "task",
+      "entityId": 1,
+      "userId": 4,
+      "userName": "Mike Wilson",
+      "message": "moved task 'Design homepage mockup' to Done",
+      "metadata": {
+        "taskTitle": "Design homepage mockup",
+        "oldStatus": "in_progress",
+        "newStatus": "done"
+      },
+      "timestamp": "2026-01-24T15:00:00.000Z"
+    },
+    {
+      "id": 13,
+      "type": "task_created",
+      "entityType": "task",
+      "entityId": 9,
+      "userId": 3,
+      "userName": "Jane Smith",
+      "message": "created task 'Research push notification services'",
+      "metadata": {
+        "taskTitle": "Research push notification services",
+        "projectId": 2
+      },
+      "timestamp": "2026-01-25T11:00:00.000Z"
+    },
+    {
+      "id": 14,
+      "type": "project_updated",
+      "entityType": "project",
+      "entityId": 2,
+      "userId": 1,
+      "userName": "Admin User",
+      "message": "updated project 'Mobile App Development'",
+      "metadata": {
+        "projectName": "Mobile App Development",
+        "changes": [
+          "progress"
+        ]
+      },
+      "timestamp": "2026-01-25T16:00:00.000Z"
+    },
+    {
+      "id": 15,
+      "type": "task_created",
+      "entityType": "task",
+      "entityId": 10,
+      "userId": 1,
+      "userName": "Admin User",
+      "message": "created task 'Setup CI/CD pipeline'",
+      "metadata": {
+        "taskTitle": "Setup CI/CD pipeline",
+        "projectId": 2
+      },
+      "timestamp": "2026-01-26T09:00:00.000Z"
+    },
+    {
+      "id": 16,
+      "type": "task_status_changed",
+      "entityType": "task",
+      "entityId": 6,
+      "userId": 1,
+      "userName": "Admin User",
+      "message": "moved task 'Define app architecture' to Done",
+      "metadata": {
+        "taskTitle": "Define app architecture",
+        "oldStatus": "in_progress",
+        "newStatus": "done"
+      },
+      "timestamp": "2026-01-28T18:00:00.000Z"
+    },
+    {
+      "id": 17,
+      "type": "task_created",
+      "entityType": "task",
+      "entityId": 7,
+      "userId": 2,
+      "userName": "John Doe",
+      "message": "created task 'Setup React Native project'",
+      "metadata": {
+        "taskTitle": "Setup React Native project",
+        "projectId": 2
+      },
+      "timestamp": "2026-01-29T09:00:00.000Z"
+    },
+    {
+      "id": 18,
+      "type": "project_updated",
+      "entityType": "project",
+      "entityId": 1,
+      "userId": 4,
+      "userName": "Mike Wilson",
+      "message": "updated project 'Website Redesign'",
+      "metadata": {
+        "projectName": "Website Redesign",
+        "changes": [
+          "progress"
+        ]
+      },
+      "timestamp": "2026-02-01T14:30:00.000Z"
+    },
+    {
+      "id": 19,
+      "type": "task_status_changed",
+      "entityType": "task",
+      "entityId": 2,
+      "userId": 2,
+      "userName": "John Doe",
+      "message": "moved task 'Implement navigation component' to In Progress",
+      "metadata": {
+        "taskTitle": "Implement navigation component",
+        "oldStatus": "todo",
+        "newStatus": "in_progress"
+      },
+      "timestamp": "2026-02-01T11:30:00.000Z"
+    },
+    {
+      "id": 20,
+      "type": "task_status_changed",
+      "entityType": "task",
+      "entityId": 4,
+      "userId": 3,
+      "userName": "Jane Smith",
+      "message": "moved task 'Setup footer with contact info' to Review",
+      "metadata": {
+        "taskTitle": "Setup footer with contact info",
+        "oldStatus": "in_progress",
+        "newStatus": "review"
+      },
+      "timestamp": "2026-02-02T16:00:00.000Z"
+    },
+    {
+      "id": 21,
+      "type": "task_status_changed",
+      "entityType": "task",
+      "entityId": 8,
+      "userId": 4,
+      "userName": "Mike Wilson",
+      "message": "moved task 'Design app wireframes' to Review",
+      "metadata": {
+        "taskTitle": "Design app wireframes",
+        "oldStatus": "in_progress",
+        "newStatus": "review"
+      },
+      "timestamp": "2026-02-02T15:00:00.000Z"
+    },
+    {
+      "id": 22,
+      "type": "task_assigned",
+      "entityType": "task",
+      "entityId": 7,
+      "userId": 1,
+      "userName": "Admin User",
+      "message": "assigned task 'Setup React Native project' to John Doe",
+      "metadata": {
+        "taskTitle": "Setup React Native project",
+        "assigneeName": "John Doe",
+        "assigneeId": 2
+      },
+      "timestamp": "2026-02-03T10:00:00.000Z"
+    },
+    {
+      "type": "task_status_changed",
+      "entityType": "task",
+      "entityId": 2,
+      "userId": 1,
+      "userName": "Admin User",
+      "message": "moved task 'Implement navigation component' to 8",
+      "metadata": {
+        "taskTitle": "Implement navigation component",
+        "newStatus": "8"
+      },
+      "timestamp": "2026-02-03T17:08:46.234Z",
+      "id": 23
+    },
+    {
+      "type": "task_status_changed",
+      "entityType": "task",
+      "entityId": 3,
+      "userId": 1,
+      "userName": "Admin User",
+      "message": "moved task 'Create color palette and typography' to 8",
+      "metadata": {
+        "taskTitle": "Create color palette and typography",
+        "newStatus": "8"
+      },
+      "timestamp": "2026-02-03T17:08:53.019Z",
+      "id": 24
+    },
+    {
+      "type": "task_status_changed",
+      "entityType": "task",
+      "entityId": 13,
+      "userId": 1,
+      "userName": "Admin User",
+      "message": "moved task 'Write API documentation' to 8",
+      "metadata": {
+        "taskTitle": "Write API documentation",
+        "newStatus": "8"
+      },
+      "timestamp": "2026-02-03T17:08:56.956Z",
+      "id": 25
+    },
+    {
+      "type": "task_status_changed",
+      "entityType": "task",
+      "entityId": 12,
+      "userId": 1,
+      "userName": "Admin User",
+      "message": "moved task 'Setup Google Analytics' to 12",
+      "metadata": {
+        "taskTitle": "Setup Google Analytics",
+        "newStatus": "12"
+      },
+      "timestamp": "2026-02-03T17:08:58.194Z",
+      "id": 26
+    },
+    {
+      "type": "task_status_changed",
+      "entityType": "task",
+      "entityId": 14,
+      "userId": 1,
+      "userName": "Admin User",
+      "message": "moved task 'Perform security audit' to 14",
+      "metadata": {
+        "taskTitle": "Perform security audit",
+        "newStatus": "14"
+      },
+      "timestamp": "2026-02-03T17:08:59.305Z",
+      "id": 27
+    },
+    {
+      "type": "project_updated",
+      "entityType": "project",
+      "entityId": 1,
+      "userId": 1,
+      "userName": "Admin User",
+      "message": "updated project 'Website Redesign'",
+      "metadata": {
+        "projectName": "Website Redesign",
+        "changes": [
+          "name",
+          "description",
+          "status",
+          "progress"
+        ]
+      },
+      "timestamp": "2026-02-03T17:17:33.268Z",
+      "id": 28
+    },
+    {
+      "type": "project_updated",
+      "entityType": "project",
+      "entityId": 2,
+      "userId": 1,
+      "userName": "Admin User",
+      "message": "updated project 'Mobile App Development'",
+      "metadata": {
+        "projectName": "Mobile App Development",
+        "changes": [
+          "name",
+          "description",
+          "status",
+          "progress"
+        ]
+      },
+      "timestamp": "2026-02-03T17:25:49.719Z",
+      "id": 29
+    },
+    {
+      "type": "project_updated",
+      "entityType": "project",
+      "entityId": 2,
+      "userId": 1,
+      "userName": "Admin User",
+      "message": "updated project 'Mobile App Development'",
+      "metadata": {
+        "projectName": "Mobile App Development",
+        "changes": [
+          "name",
+          "description",
+          "status",
+          "progress"
+        ]
+      },
+      "timestamp": "2026-02-03T17:25:55.013Z",
+      "id": 30
+    },
+    {
+      "type": "project_updated",
+      "entityType": "project",
+      "entityId": 2,
+      "userId": 1,
+      "userName": "Admin User",
+      "message": "updated project 'Mobile App Development'",
+      "metadata": {
+        "projectName": "Mobile App Development",
+        "changes": [
+          "name",
+          "description",
+          "status",
+          "progress"
+        ]
+      },
+      "timestamp": "2026-02-03T17:26:01.137Z",
+      "id": 31
+    },
+    {
+      "type": "project_updated",
+      "entityType": "project",
+      "entityId": 3,
+      "userId": 1,
+      "userName": "Admin User",
+      "message": "updated project 'API Integration'",
+      "metadata": {
+        "projectName": "API Integration",
+        "changes": [
+          "name",
+          "description",
+          "status",
+          "progress"
+        ]
+      },
+      "timestamp": "2026-02-03T17:27:05.011Z",
+      "id": 32
+    }
+  ]
+}
