@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
-import { Paper, Typography, Box } from '@mui/material';
+import { Paper, Typography, Box, Button, Stack } from '@mui/material';
+import { Download as DownloadIcon } from '@mui/icons-material';
 import {
   BarChart,
   Bar,
@@ -18,6 +19,12 @@ import {
 import { useGetProjectsQuery, useGetTasksQuery } from '@/store/api';
 import type { Task, Project } from '@/shared/types';
 import LoadingSpinner from '@/shared/components/LoadingSpinner';
+import {
+  exportTasksReport,
+  exportProjectsReport,
+  exportTimeTrackingReport,
+  exportAnalyticsSummary,
+} from '@/shared/utils/exporters';
 
 const ReportsPage = () => {
   const { data: projects = [], isLoading: projectsLoading } = useGetProjectsQuery();
@@ -97,9 +104,45 @@ const ReportsPage = () => {
 
   return (
     <Box sx={{ py: 3, px: 2, maxWidth: 1280, mx: 'auto' }}>
-      <Typography variant="h4" sx={{ mb: 4, fontWeight: 700 }}>
-        Reports & Analytics
-      </Typography>
+      <Box sx={{ mb: 4 }}>
+        <Typography variant="h4" sx={{ mb: 2, fontWeight: 700 }}>
+          Reports & Analytics
+        </Typography>
+        <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1}>
+          <Button
+            size="small"
+            variant="outlined"
+            startIcon={<DownloadIcon />}
+            onClick={() => exportAnalyticsSummary(tasks as Task[], projects as Project[])}
+          >
+            Export Summary
+          </Button>
+          <Button
+            size="small"
+            variant="outlined"
+            startIcon={<DownloadIcon />}
+            onClick={() => exportTasksReport(tasks as Task[], projects as Project[])}
+          >
+            Export Tasks
+          </Button>
+          <Button
+            size="small"
+            variant="outlined"
+            startIcon={<DownloadIcon />}
+            onClick={() => exportProjectsReport(projects as Project[])}
+          >
+            Export Projects
+          </Button>
+          <Button
+            size="small"
+            variant="outlined"
+            startIcon={<DownloadIcon />}
+            onClick={() => exportTimeTrackingReport(tasks as Task[], projects as Project[])}
+          >
+            Export Time Tracking
+          </Button>
+        </Stack>
+      </Box>
 
       <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 3 }}>
         {/* Task Status Distribution */}
