@@ -14,6 +14,10 @@ const KanbanPage = lazy(() => import('@/features/tasks/pages/KanbanPage'));
 const TeamsPage = lazy(() => import('@/features/teams/pages/TeamsPage'));
 const ActivityPage = lazy(() => import('@/features/activity/pages/ActivityPage'));
 const MembersPage = lazy(() => import('@/features/members/pages/MembersPage'));
+const CalendarPage = lazy(() => import('@/features/calendar/pages/CalendarPage'));
+const TimeTrackingPage = lazy(() => import('@/features/tracking/pages/TimeTrackingPage'));
+const ReportsPage = lazy(() => import('@/features/reports/pages/ReportsPage'));
+const AdvancedSearchPage = lazy(() => import('@/features/search/pages/AdvancedSearchPage'));
 
 const router = createBrowserRouter([
   {
@@ -89,6 +93,38 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<LoadingSpinner />}>
             <MembersPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'calendar',
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <CalendarPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'tracking',
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <TimeTrackingPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'reports',
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <ReportsPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'search',
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <AdvancedSearchPage />
           </Suspense>
         ),
       },

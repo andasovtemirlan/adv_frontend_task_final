@@ -53,7 +53,7 @@ const AppLayout = () => {
             display: 'flex',
             flexDirection: 'column',
             width: '100%',
-            marginLeft: { xs: 0, sm: '240px' },
+            marginRight: { xs: 0, sm: '240px' },
             transition: 'margin 0.3s ease-in-out',
           }}
         >

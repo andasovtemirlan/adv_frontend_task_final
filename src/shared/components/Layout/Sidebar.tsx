@@ -16,6 +16,10 @@ import {
   People,
   Timeline,
   PersonAdd,
+  Calendar,
+  Schedule,
+  Assessment,
+  Search,
 } from '@mui/icons-material';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { memo, useCallback } from 'react';
@@ -34,6 +38,10 @@ const menuItems = [
   { text: 'Teams', icon: <People />, path: '/teams' },
   { text: 'Members', icon: <PersonAdd />, path: '/members' },
   { text: 'Activity', icon: <Timeline />, path: '/activity' },
+  { text: 'Calendar', icon: <Calendar />, path: '/calendar' },
+  { text: 'Time Tracking', icon: <Schedule />, path: '/tracking' },
+  { text: 'Reports', icon: <Assessment />, path: '/reports' },
+  { text: 'Search', icon: <Search />, path: '/search' },
 ];
 
 /**
@@ -73,9 +81,10 @@ const Sidebar = memo(({ open, onClose }: SidebarProps) => {
 
   return (
     <>
-      {/* Mobile drawer */}
+      {/* Mobile drawer - right anchor */}
       <Drawer
         variant="temporary"
+        anchor="right"
         open={open}
         onClose={onClose}
         ModalProps={{ keepMounted: true }}
@@ -91,16 +100,17 @@ const Sidebar = memo(({ open, onClose }: SidebarProps) => {
         {drawerContent}
       </Drawer>
 
-      {/* Desktop drawer - positioned fixed */}
+      {/* Desktop drawer - positioned right */}
       <Drawer
         variant="permanent"
+        anchor="right"
         sx={{
           display: { xs: 'none', sm: 'block' },
           '& .MuiDrawer-paper': { 
             boxSizing: 'border-box', 
             width: DRAWER_WIDTH,
             position: 'fixed',
-            left: 0,
+            right: 0,
             top: 0,
             zIndex: 1100,
             height: '100vh',
